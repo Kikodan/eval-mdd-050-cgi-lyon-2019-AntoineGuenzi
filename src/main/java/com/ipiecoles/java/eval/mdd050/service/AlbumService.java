@@ -5,6 +5,8 @@ import com.ipiecoles.java.eval.mdd050.repository.AlbumRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityExistsException;
+
 @Service
 public class AlbumService {
 
@@ -13,6 +15,9 @@ public class AlbumService {
 
 
     public Album creerAlbum(Album album) {
+        /*if(albumRepository.findAll() > 5){
+            throw  new EntityExistsException("Il existe déja 5 Album pour cette artiste");
+        }*/
         return albumRepository.save(album);
     }
 

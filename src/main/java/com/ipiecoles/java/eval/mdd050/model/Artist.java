@@ -13,7 +13,7 @@ public class Artist implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "ArtistId")
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "Name")

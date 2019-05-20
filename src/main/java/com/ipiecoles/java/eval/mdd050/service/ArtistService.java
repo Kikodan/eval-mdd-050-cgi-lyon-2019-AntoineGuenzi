@@ -10,7 +10,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityExistsException;
 import javax.persistence.EntityNotFoundException;
+import java.util.List;
 
 @Service
 public class ArtistService {
@@ -40,6 +42,9 @@ public class ArtistService {
     }
 
     public Artist creerArtiste(Artist artist) {
+        if(artistRepository.findByName(artist.getName()) != null){
+            throw  new EntityExistsException("L'artiste existe déja");
+        }
         return artistRepository.save(artist);
     }
 
@@ -48,6 +53,9 @@ public class ArtistService {
     }
 
     public Artist updateArtiste(Long id, Artist artist) {
+        if(artistRepository.findByName(artist.getName()) != null){
+            throw  new EntityExistsException("L'artiste existe déja");
+        }
         return artistRepository.save(artist);
     }
 
