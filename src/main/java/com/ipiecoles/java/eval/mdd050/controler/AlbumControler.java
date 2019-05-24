@@ -18,12 +18,21 @@ public class AlbumControler {
     @Autowired
     private ArtistService artistService;
 
+    /**
+     * Controller apellé lors de la création d'un Album
+     * @param album
+     * @return void ( Création de l'album ne nécéssitant pas de retour
+     */
     @RequestMapping(value = "", method = RequestMethod.POST)
     public Album createAlbum(@RequestBody Album album)
     {
         return albumService.creerAlbum(album);
     }
 
+    /**
+     * Controller apellé lors du delete d'un Album
+     * @param id
+     */
     @RequestMapping(value = "/{albumId}", method = RequestMethod.DELETE)
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void delAlbum(@PathVariable(name = "albumId") Long id)
